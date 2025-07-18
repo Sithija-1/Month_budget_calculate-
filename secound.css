@@ -10,7 +10,7 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  backdrop-filter: brightness(0.7);
+/*   backdrop-filter: brightness(0.7); */
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
