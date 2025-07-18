@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="chart.css">
+    <link rel="stylesheet" href="nav.css">
+
+<body>
+                                             <!-- nav -->
+    <img src="icon.png" alt="menu" id="menu-icon">
+
+                                         
+    <nav id="nav1">
+        <a href="#">Dashboard</a>
+        <a href="index.html">Home</a>
+        <a href="secound.html">secound</a>
+    </nav>
+
+    <div id="myPlot" style="width:100%;max-width:700px"></div>
+
+    
+
+    
+
+   <script>
+    const labels = ["total_rest","breakfast", "Lunch", "Dinner", "other food", "traveling cost", "tool cost","cloths","other"];
+
+    // Get values from localStorage
+    const storedData = JSON.parse(localStorage.getItem("expenses")) || {};
+    const storedData1 = JSON.parse(localStorage.getItem("expensess")) || {};
+
+const totalExpenses = 
+  (storedData.breakfast || 0) +
+  (storedData.lunch || 0) +
+  (storedData.dinner || 0) +
+  (storedData.other_food || 0) +
+  (storedData.traveling_cost || 0) +
+  (storedData.tool_cost || 0) +
+  (storedData.cloths || 0) +
+  (storedData.other || 0);
+
+const remaining = (storedData1.total_rest || 0) - totalExpenses;
+alert("the rest of money :"+remaining);
+
+
+
+const yArray = [
+    remaining,                // Remaining budget
+    storedData.breakfast || 0,
+    storedData.lunch || 0,
+    storedData.dinner || 0,
+    storedData.other_food || 0,
+    storedData.traveling_cost || 0,
+    storedData.tool_cost || 0,
+    storedData.cloths || 0,
+    storedData.other || 0
+];
+
+
+
+    const layout = {title:"Expenses Track"};
+
+    const data = [{labels: labels, values: yArray, type: "pie"}];
+
+    Plotly.newPlot("myPlot", data, layout);
+</script>
+<br><br>
+    
+    <button type="button" onclick="add()">add more</button> <br>
+
+    <button type="button" onclick="resets()">reset</button>
+
+    <script>
+        function add(){
+            
+            window.location.href = "secound.html";
+        }
+
+        function resets() {
+            localStorage.removeItem("expenses");
+            localStorage.removeItem("expensess");
+            location.reload();
+
+             window.location.href = "index.html";
+  }
+        
+    </script>
+    
+
+</body>
+</html>
+

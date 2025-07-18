@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Budget Page</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="nav.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="index.js"></script>
+</head>
+<body>
+
+  <img src="icon.png" alt="menu" id="menu-icon">
+
+                                         
+  <nav id="nav1">
+    <a href="chart.html">Dashboard</a>
+    <a href="#">Home</a>
+    <a href="secound.html">secound</a>
+  </nav>
+
+ 
+  <section id="section1">
+    <form id="forms1">
+      <h1>Setup your budget</h1>
+
+      <label>Add Budget</label>
+      <input type="text" id="Tbuget" />
+
+      <!-- <label>Date</label>
+      <input type="date" /> -->
+
+      <button type="button" onclick="add()">Submit</button>
+    </form>
+  </section>
+
+  <script>
+    function add(){
+      let total_rest = parseInt(document.getElementById("Tbuget").value) ;
+
+      const newe = {
+          total_rest: total_rest,
+          breakfast: 0,
+          lunch: 0,
+          dinner: 0,
+          other_food: 0,
+          traveling_cost: 0,
+          tool_cost: 0,
+          cloths: 0,
+          other: 0
+      };
+
+      localStorage.setItem("expensess", JSON.stringify(newe));
+      window.location.href = "secound.html";
+  }
+
+
+    
+  </script>
+  
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="nav.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <img src="icon.png" alt="" id="image">
+    <nav id="nav1">
+        <a href="">dashbord</a>
+        <a href="">home</a>
+        <a href="">Enter</a>
+        
+    </nav>
+    <script>
+        function check(){
+            if(window.matchMedia("(max-width: 800px)").matches){
+                $("#image").show();
+                $("#nav1").hide();
+
+            }
+            else{
+                $("#image").hide();
+                $("#nav1").show();
+            }
+
+        }
+
+        $(document).ready(function () {
+            check();
+
+            $("#image").click(function () {
+                $("#nav1").slideToggle();
+            });
+
+            $(window).resize(function () {
+                check();
+            });
+        });
+        
+    </script>
+</body>
+</html>

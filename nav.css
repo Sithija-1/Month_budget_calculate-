@@ -1,0 +1,56 @@
+/* Navigation Bar */
+nav {
+  background-color: #278ea3;
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+}
+
+#menu-icon {
+  display: none;
+  width: 40px;
+  height: 40px;
+  margin: 15px;
+  cursor: pointer;
+  
+
+}
+
+/* Mobile Nav (Sidebar Style) */
+@media (max-width: 800px) {
+  nav {
+    position: fixed;
+    left: -250px; 
+    transition: left 0.5s ease;
+    top: 0;
+    height: 100%;
+    width: 200px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 60px;
+    z-index: 1000;
+  }
+
+  nav.left {
+    left: 0;
+  }
+
+  #menu-icon {
+    display: block;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1100;
+    background-repeat: no-repeat;
+
+  }
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="secound.css">
+    <link rel="stylesheet" href="nav.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+
+    <img src="icon.png" alt="menu" id="menu-icon">
+
+                                         
+  <nav id="nav1">
+    <a href="chart.html">Dashboard</a>
+    <a href="index.html">Home</a>
+    <a href="#">secound</a>
+  </nav>
+    
+    <section id="section1">
+    <form id="forms2">
+      <h1>Add your daily expenses</h1>
+
+      <label>Add breakfast</label>
+      <input type="text" id="breakfast" />
+
+      <label>Add Lunch</label>
+      <input type="text"  id="Lunch"/>
+
+      <label>Add Dinner</label>
+      <input type="text" id="Dinner"/>
+
+      <label>Add other food</label>
+      <input type="text" id="other_food" />
+
+      <label>Add traveling cost</label>
+      <input type="text" id="traveling_cost"/>
+
+      <label>Add tool cost</label>
+      <input type="text" id="tool_cost"/>
+
+      <label>Add cloths</label>
+      <input type="text" id="cloths"/>
+
+      <label>Add other</label>
+      <input type="text" id="other"/>
+
+      
+
+      <button type="button" onclick="add1()">Submit</button><br><br>
+
+      <button type="button" onclick="add()">exit</button>
+    </form>
+  </section>
+
+  <script>
+
+     function add() {
+   
+             window.location.href = "index.html";
+   
+        
+     }
+
+
+function add1() {
+    // Get current input values
+    let breakfast = parseInt(document.getElementById("breakfast").value) || 0;
+    let lunch = parseInt(document.getElementById("Lunch").value) || 0;
+    let dinner = parseInt(document.getElementById("Dinner").value) || 0;
+    let other_food = parseInt(document.getElementById("other_food").value) || 0;
+    let traveling_cost = parseInt(document.getElementById("traveling_cost").value) || 0;
+    let tool_cost = parseInt(document.getElementById("tool_cost").value) || 0;
+    let cloths = parseInt(document.getElementById("cloths").value) || 0;
+    let other = parseInt(document.getElementById("other").value) || 0;
+
+    // Get previous data from localStorage
+    let oldData = JSON.parse(localStorage.getItem("expenses")) || {
+        breakfast: 0, lunch: 0, dinner: 0, other_food: 0,
+        traveling_cost: 0, tool_cost: 0, cloths: 0, other: 0
+    };
+
+    // Add current values to previous 
+    let newData = {
+        breakfast: oldData.breakfast + breakfast,
+        lunch: oldData.lunch + lunch,
+        dinner: oldData.dinner + dinner,
+        other_food: oldData.other_food + other_food,
+        traveling_cost: oldData.traveling_cost + traveling_cost,
+        tool_cost: oldData.tool_cost + tool_cost,
+        cloths: oldData.cloths + cloths,
+        other: oldData.other + other
+    };
+
+    // Save updated data to localStorage
+    localStorage.setItem("expenses", JSON.stringify(newData));
+
+    // Redirect to chart page
+    window.location.href = "chart.html";
+
+    
+}
+
+
+    
+  </script>
+
+</body>
+</html>
